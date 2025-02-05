@@ -1,0 +1,30 @@
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone@7.19.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        function formHandler(e) {
+            e.preventDefault()
+            alert('Form submitted.')
+        }
+        function App() {
+
+            return (
+                <form onSubmit={formHandler}>
+                    <input type="text" placeholder="Message" />
+                    <button>Submit</button>
+                </form>
+            )
+        }
+        root.render(
+            <App />
+        );
+    </script>
+</body>

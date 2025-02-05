@@ -1,0 +1,46 @@
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone@7.19.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+
+        function App() {
+            const [firstName, setFirstName] = React.useState('')
+            const [lastName, setLastName] = React.useState('')
+
+            function formHandler(e) {
+                e.preventDefault()
+                alert(`First name : ${firstName}, Last name : ${lastName}`)
+                // clear the input's current value
+                setFirstName('')
+                setLastName('')
+            }
+
+            function firstNameHandler(e) {
+                setFirstName(e.target.value)
+            }
+
+            function lastNameHandler(e) {
+                setLastName(e.target.value)
+            }
+
+            return (
+                <form onSubmit={formHandler}>
+                    <input id="first-name" value={firstName} type="text" onChange={firstNameHandler} placeholder="First Name" />
+                    <input id="last-name" value={lastName} type="text" onChange={lastNameHandler} placeholder="Last Name" />
+                    <button>Submit</button>
+                </form>
+            )
+        }
+        root.render(
+            <App />
+        );
+    </script>
+</body>

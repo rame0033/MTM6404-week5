@@ -1,0 +1,55 @@
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone@7.19.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        const data = ['Box', 'Apple', 'Orange', 'Ball']
+        function ListData(props) {
+            const listItems = props.data.map(item => <li key={item}>{item}</li>)
+            return <ul>{listItems}</ul>
+        }
+
+        function App() {
+            const [search, setSearch] = React.useState('');
+            // const [filteredData, setData] = React.useState(data);
+            const [filteredData, setData] = React.useState(data);
+
+            function formHandler(e) {
+                e.preventDefault();
+            }
+
+            function inputHandler(e) {
+                setSearch(e.target.value);
+            }
+
+            React.useEffect(() => {
+                setData(data.filter(item => item.toLowerCase().includes(search.toLowerCase())))
+            }, [search, data])
+
+            // React.useEffect(() => {
+            //     setData(
+            //         data.filter(item => item.toLowerCase().includes(search.toLowerCase()))
+            //     );
+            // }, [search, data]);
+
+            return (
+                <form onSubmit={formHandler}>
+                    <input value={search} onChange={inputHandler} type="text" placeholder="Search..." />
+                    <button>Submit</button>
+                    <ListData data={filteredData} />
+                </form>
+            );
+        }
+
+        root.render(
+            <App />
+        );
+    </script>
+</body>

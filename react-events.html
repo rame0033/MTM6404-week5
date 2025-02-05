@@ -1,0 +1,42 @@
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone@7.19.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        let track = 0;
+        function LaserButton(props) {
+            //Function to be called on Click
+            function activateLaser(power) {
+                track++
+                alert(`Laser is set to ${power}, Clicked ${track}`)
+            }
+
+            return (
+                //https://legacy.reactjs.org/docs/events.html
+                // (e) => :::: Ensures the function will only be called when the user clicks
+                <button onClick={(e) => activateLaser(props.power)}>
+                    {props.label}
+                </button>
+            )
+        }
+        function App() {
+
+            return (
+                <>
+                    <LaserButton power="Blue" label="Activate Laser"/>
+                    <p>Clicked {track}</p>
+                </>
+            )
+        }
+        root.render(
+            <App />
+        );
+    </script>
+</body>
