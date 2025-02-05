@@ -12,7 +12,7 @@
         const root = ReactDOM.createRoot(document.getElementById('root'))
         function App() {
             //desctructuring
-            const [message, setMessage] = React.useState('')
+            const [message, setMessage] = React.useState('Deactivated') // We can set a default value. 
             function activateLaser() {
                 setMessage('Laser Activated!')
             }

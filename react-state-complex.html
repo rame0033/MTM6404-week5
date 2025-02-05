@@ -15,11 +15,11 @@
             function buttonHandler() {
                 // spread synatax
                 //https://react.dev/reference/react/useState#updating-objects-and-arrays-in-state
-                setItems([...items, `Item ${items.length + 1}`])
-            }
+                setItems([...items, `Item ${items.length + 1}`]) // Spread operator to add a new item to the items array 
+                }
 
-            const listItems = items.map(item => <li key={item}>{item}</li>)
-            const list = <ul>{listItems}</ul>
+            const listItems = items.map(item => <li key={item}>{item}</li>) // -> Maps the items to a list of <li> elements
+            const list = <ul>{listItems}</ul> // -> Wraps the list of <li> elements in a <ul> element
             return (
                 <React.Fragment>
                     <button onClick={buttonHandler}>Add Item</button>

@@ -10,18 +10,19 @@
     <div id="root"></div>
     <script type="text/babel">
         const root = ReactDOM.createRoot(document.getElementById('root'))
-        let track = 0;
-        function LaserButton(props) {
+        let track = 0; // -> Variable to track the number of clicks; Global variable
+        function LaserButton(props) { // -> Component function 
             //Function to be called on Click
             function activateLaser(power) {
-                track++
+                track++ // -> Increment the track variable
                 alert(`Laser is set to ${power}, Clicked ${track}`)
             }
 
             return (
                 //https://legacy.reactjs.org/docs/events.html
-                // (e) => :::: Ensures the function will only be called when the user clicks
-                <button onClick={(e) => activateLaser(props.power)}>
+                // (e) => :::: Ensures the function will only be called when the user clicks - if there is no (e) =>, the function will be called immediately
+                // onClick={(e) => activateLaser(props.power)} :::: Calls the function with the power prop
+                <button onClick={(e) => activateLaser(props.power)}> 
                     {props.label}
                 </button>
             )
