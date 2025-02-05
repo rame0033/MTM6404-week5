@@ -9,6 +9,9 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
+
+        //In this example, useState is not written. In this case, the component will not have any state to manage. This means that any dynamic data or values that need to change over time (such as the track variable in your example) will not be able to update, and the component will not re-render when those values change.
+
         const root = ReactDOM.createRoot(document.getElementById('root'))
         let track = 0; // -> Variable to track the number of clicks; Global variable
         function LaserButton(props) { // -> Component function 
