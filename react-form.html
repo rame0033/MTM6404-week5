@@ -21,9 +21,15 @@
             }
 
             function inputHandler(e) {
-                setMessage(e.target.value)
+                setMessage(e.target.value) // Updates the state variable 'message' with the current value of the input field
             }
+
             return (
+
+                /* value={message} binds the input field's value to the state variable 'message'. 
+                onChange={inputHandler} is an event handler that updates the state variable 'message' whenever the input value changes.
+                */
+
                 <form onSubmit={formHandler}>
                     <input value={message} type="text" onChange={inputHandler} placeholder="Message" />
                     <button>Submit</button>

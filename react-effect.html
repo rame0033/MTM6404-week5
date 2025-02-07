@@ -30,9 +30,22 @@
             }
 
             React.useEffect(() => {
+                // React.useEffect is a hook that runs the provided function after the component renders
+                // It can be used for side effects such as data fetching, subscriptions, or manually changing the DOM
+                // The function inside useEffect will run after the render is committed to the screen
+                // If a dependency array is provided, the effect will only re-run when one of the dependencies has changed
+                
                 setData(data.filter(item => item.toLowerCase().includes(search.toLowerCase())))
+                // setData is a state updater function that updates the state variable 'data' with the filtered list of items
+                // The filter method creates a new array with all elements that pass the test implemented by the provided function
+                // In this case, it filters items that include the search term (case-insensitive)
+            
             }, [search, data])
+            // The dependency array [search, data] specifies when the useEffect hook should re-run
+            // The effect will re-run whenever the 'search' or 'data' state variables change
+            // This helps optimize performance by only running the effect when necessary
 
+            
             // React.useEffect(() => {
             //     setData(
             //         data.filter(item => item.toLowerCase().includes(search.toLowerCase()))

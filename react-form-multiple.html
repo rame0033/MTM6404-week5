@@ -12,29 +12,31 @@
         const root = ReactDOM.createRoot(document.getElementById('root'))
 
         function App() {
-            const [firstName, setFirstName] = React.useState('')
-            const [lastName, setLastName] = React.useState('')
+            const [firstName, setFirstName] = React.useState('') // -> The state variable 'firstName' is initialized with an empty string
+            const [lastName, setLastName] = React.useState('') // -> The state variable 'lastName' is initialized with an empty string
 
             function formHandler(e) {
                 e.preventDefault()
                 alert(`First name : ${firstName}, Last name : ${lastName}`)
                 // clear the input's current value
-                setFirstName('')
-                setLastName('')
+                setFirstName('') //-> The setFirstName function is called to update the state variable 'firstName' to an empty string
+                setLastName('') // -> The setLastName function is called to update the state variable 'lastName' to an empty string
             }
 
             function firstNameHandler(e) {
-                setFirstName(e.target.value)
+                setFirstName(e.target.value) 
+                // Updates the state variable 'firstName' with the current value of the input field
+                // e.target.value gets the current value of the input field that triggered the event
             }
 
             function lastNameHandler(e) {
                 setLastName(e.target.value)
             }
 
-            return (
+            return ( //-> The formHandler function is called when the form is submitted
                 <form onSubmit={formHandler}>
-                    <input id="first-name" value={firstName} type="text" onChange={firstNameHandler} placeholder="First Name" />
-                    <input id="last-name" value={lastName} type="text" onChange={lastNameHandler} placeholder="Last Name" />
+                    <input id="first-name" value={firstName} type="text" onChange={firstNameHandler} placeholder="First Name" /> {/* value={firstName} binds the input field's value to the state variable 'firstName'. onChange={firstNameHandler} is an event handler that updates the state variable 'firstName' whenever the input value changes. */}
+                    <input id="last-name" value={lastName} type="text" onChange={lastNameHandler} placeholder="Last Name" /> {/* value={lastName} binds the input field's value to the state variable 'lastName'. onChange={lastNameHandler} is an event handler that updates the state variable 'lastName' whenever the input value changes. */}
                     <button>Submit</button>
                 </form>
             )
